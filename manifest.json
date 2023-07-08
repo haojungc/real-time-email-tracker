@@ -1,0 +1,32 @@
+{
+
+  "manifest_version": 2,
+  "name": "Email Tracker",
+  "version": "1.0",
+
+  "description": "Tracks your email status",
+
+  "icons": {
+    "96": "icons/email-128.png"
+  },
+
+  "permissions": [
+      "activeTab"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": [
+           "https://mail.google.com/mail/*",
+           "<all_urls>"
+      ],
+      "js": ["content_script/email.js"]
+    }
+  ],
+
+  "browser_action": {
+      "default_icon": "icons/email-64.png",
+      "default_title": "Email Tracker",
+      "default_popup": "popup/index.html"
+  }
+}
