@@ -2,25 +2,25 @@
 
   "manifest_version": 2,
   "name": "Email Tracker",
-  "version": "1.0",
+  "version": "0.1",
 
-  "description": "Tracks your email status",
+  "description": "Tracks your email status in real-time",
 
   "icons": {
     "96": "icons/email-128.png"
   },
 
   "permissions": [
-      "activeTab"
+      "activeTab",
+      "https://hfoaukd3ydzh5kvxxssvrawx2m0huabh.lambda-url.us-east-1.on.aws/*"
   ],
 
   "content_scripts": [
     {
       "matches": [
-           "https://mail.google.com/mail/*",
-           "<all_urls>"
+           "https://mail.google.com/mail/*"
       ],
-      "js": ["content_script/email.js"]
+      "js": ["content_script/email.js", "dist/main.js"]
     }
   ],
 

@@ -1,0 +1,16 @@
+{
+  "name": "email-tracker",
+  "description": "A browser extension that tracks the status of each email you send",
+  "version": "0.0.1",
+  "main": "app.js",
+  "scripts": {
+    "build-dev": "webpack --mode=development"
+  },
+  "author": "Nick Chen",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
