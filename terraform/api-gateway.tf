@@ -1,5 +1,5 @@
 resource "aws_api_gateway_rest_api" "email_tracker_api_gateway" {
-  name          = "email-tracker-api-gateway"
+  name = "email-tracker-api-gateway"
 }
 
 # POST: Create email status entry
@@ -17,14 +17,14 @@ resource "aws_api_gateway_method" "creation_lambda_method" {
 }
 
 resource "aws_api_gateway_integration" "creation_lambda_integration" {
-  resource_id = aws_api_gateway_resource.creation_lambda_resource.id
-  rest_api_id = aws_api_gateway_rest_api.email_tracker_api_gateway.id
-  http_method = aws_api_gateway_method.creation_lambda_method.http_method
+  resource_id             = aws_api_gateway_resource.creation_lambda_resource.id
+  rest_api_id             = aws_api_gateway_rest_api.email_tracker_api_gateway.id
+  http_method             = aws_api_gateway_method.creation_lambda_method.http_method
   integration_http_method = aws_api_gateway_method.creation_lambda_method.http_method
-  type        = "AWS_PROXY"
+  type                    = "AWS_PROXY"
 
   depends_on = [aws_api_gateway_method.creation_lambda_method]
-  uri = aws_lambda_function.lambda_create.invoke_arn
+  uri        = aws_lambda_function.lambda_create.invoke_arn
 }
 
 # GET: Get email status
@@ -42,14 +42,14 @@ resource "aws_api_gateway_method" "retrieval_lambda_method" {
 }
 
 resource "aws_api_gateway_integration" "retrieval_lambda_integration" {
-  resource_id = aws_api_gateway_resource.retrieval_lambda_resource.id
-  rest_api_id = aws_api_gateway_rest_api.email_tracker_api_gateway.id
-  http_method = aws_api_gateway_method.retrieval_lambda_method.http_method
+  resource_id             = aws_api_gateway_resource.retrieval_lambda_resource.id
+  rest_api_id             = aws_api_gateway_rest_api.email_tracker_api_gateway.id
+  http_method             = aws_api_gateway_method.retrieval_lambda_method.http_method
   integration_http_method = aws_api_gateway_method.retrieval_lambda_method.http_method
-  type        = "AWS_PROXY"
+  type                    = "AWS_PROXY"
 
   depends_on = [aws_api_gateway_method.retrieval_lambda_method]
-  uri = aws_lambda_function.lambda_get.invoke_arn
+  uri        = aws_lambda_function.lambda_get.invoke_arn
 }
 
 # PUT: Update email status
@@ -67,14 +67,14 @@ resource "aws_api_gateway_method" "update_lambda_method" {
 }
 
 resource "aws_api_gateway_integration" "update_lambda_integration" {
-  resource_id = aws_api_gateway_resource.update_lambda_resource.id
-  rest_api_id = aws_api_gateway_rest_api.email_tracker_api_gateway.id
-  http_method = aws_api_gateway_method.update_lambda_method.http_method
+  resource_id             = aws_api_gateway_resource.update_lambda_resource.id
+  rest_api_id             = aws_api_gateway_rest_api.email_tracker_api_gateway.id
+  http_method             = aws_api_gateway_method.update_lambda_method.http_method
   integration_http_method = aws_api_gateway_method.update_lambda_method.http_method
-  type        = "AWS_PROXY"
+  type                    = "AWS_PROXY"
 
   depends_on = [aws_api_gateway_method.update_lambda_method]
-  uri = aws_lambda_function.lambda_update.invoke_arn
+  uri        = aws_lambda_function.lambda_update.invoke_arn
 }
 
 resource "aws_api_gateway_deployment" "email_tracker_deployment" {
