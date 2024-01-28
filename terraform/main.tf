@@ -1,9 +1,5 @@
-locals {
-  aws_region = "us-west-1"
-}
-
 provider "aws" {
-  region = local.aws_region
+  region = var.AWS_REGION
 
   default_tags {
     tags = var.tags
