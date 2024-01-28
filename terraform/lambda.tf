@@ -6,6 +6,7 @@ locals {
     get    = "${local.src_dir}/get-thread-status/index.js"
     update = "${local.src_dir}/update-thread-status/index.js"
   }
+  runtime = "nodejs18.x"
 }
 
 data "aws_iam_policy_document" "lambda_assume_role" {
@@ -63,7 +64,7 @@ resource "aws_lambda_function" "lambda_create" {
 
   source_code_hash = data.archive_file.archive_for_lambda_create.output_base64sha256
 
-  runtime = "nodejs18.x"
+  runtime = local.runtime
 }
 
 resource "aws_lambda_function" "lambda_get" {
@@ -75,7 +76,7 @@ resource "aws_lambda_function" "lambda_get" {
 
   source_code_hash = data.archive_file.archive_for_lambda_get.output_base64sha256
 
-  runtime = "nodejs18.x"
+  runtime = local.runtime
 }
 
 resource "aws_lambda_function" "lambda_update" {
@@ -87,5 +88,5 @@ resource "aws_lambda_function" "lambda_update" {
 
   source_code_hash = data.archive_file.archive_for_lambda_update.output_base64sha256
 
-  runtime = "nodejs18.x"
+  runtime = local.runtime
 }
